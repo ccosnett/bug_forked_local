@@ -1,144 +1,0 @@
-/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/joblib/memory.py:577: JobLibCollisionWarning: Cannot detect name collisions for function '_load_data_for_pools'
-  return self._cached_call(args, kwargs, shelving=False)[0]
-2024-10-27 15:40:12,510 - Dashboard will be available on dashboard_server_port=9999.
-2024-10-27 15:40:12,510 - Wait until the simulation has finished setup and is running to connect the dashboard to the simulation!
-
-2024-10-27 15:40:12,511 - =============== CONNECT NETWORK =============
-2024-10-27 15:40:13,026 - anvil --no-mining --host 127.0.0.1 --accounts 1 --balance 10000000000000000000 --chain-id 31337 --port 61068 --base-fee 0 --disable-block-gas-limit --ipc /tmp/anvil_61068.ipc --prune-history --order fifo --transaction-block-keeper 64
-2024-10-27 15:40:13,108 - ==========================================
-2024-10-27 15:40:13,109 - =============== SETUP CONTRACTS =============
-2024-10-27 15:40:13,122 - Deployed USDC at address 0x5FbDB2315678afecb367f032d93F642f64180aa3
-2024-10-27 15:40:13,135 - Deployed WETH at address 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
-2024-10-27 15:40:13,148 - Deployed WBTC at address 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9
-2024-10-27 15:40:13,168 - Deployed NonfungibleTokenPositionDescriptor at address 0xec3fBf694de486e62c81bAFf3CEea25eF2DcCeE2
-2024-10-27 15:40:13,219 - Deployed Factory at address 0x1F98431c8aD98523631AE4a59f267346ea31F984
-2024-10-27 15:40:13,249 - Deployed SwapRouter at address 0xE592427A0AEce92De3Edee1F18E0157C05861564
-2024-10-27 15:40:13,300 - Deployed NonfungiblePositionManager at address 0xC36442b4a4522E871399CD717aBDD847Ab11FE88
-2024-10-27 15:40:13,323 - Deployed USDC/WETH 0.05 pool at address 0x0231AAf405DEFa6c1dFaB5D45692B288A4ee3Bf6
-2024-10-27 15:40:13,338 - Deployed WBTC/WETH 0.05 pool at address 0x11fB5F75BDe22369C160EA89AE988e0aECA2241c
-2024-10-27 15:40:13,343 - ==========================================
-2024-10-27 15:40:13,343 - ============== SETUP AGENTS ==============
-2024-10-27 15:40:13,345 - MarketAgent account: 0x56a54fD3BC392A47f6f1b2a8A7173F91F4fA35d8
-2024-10-27 15:40:13,351 - Funded 114645632908233855836763006616766466838033906502273760817076898996956153.511936 USDC from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 to MarketAgent at address 0x56a54fD3BC392A47f6f1b2a8A7173F91F4fA35d8
-2024-10-27 15:40:13,355 - Funded 114645632908233855836763006616766466838033906502273760817076.898996956153511936 WETH from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 to MarketAgent at address 0x56a54fD3BC392A47f6f1b2a8A7173F91F4fA35d8
-2024-10-27 15:40:13,360 - Funded 1146456329082338558367630066167664668380339065022737608170768989969561.53511936 WBTC from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 to MarketAgent at address 0x56a54fD3BC392A47f6f1b2a8A7173F91F4fA35d8
-2024-10-27 15:40:13,366 - MarketAgent portfolio: {'USDC': Decimal('114645632908233855836763006616766466838033906502273760817076898996956153.511936'), 'WETH': Decimal('114645632908233855836763006616766466838033906502273760817076.898996956153511936'), 'WBTC': Decimal('1146456329082338558367630066167664668380339065022737608170768989969561.53511936'), 'ETH': Decimal('500000000')}
-2024-10-27 15:40:13,399 - bitcoin_buyer account: 0xB7c5A3F23a47CfA233D32a2ABa0acE3656536572
-2024-10-27 15:40:13,403 - Funded 50000 USDC from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 to bitcoin_buyer at address 0xB7c5A3F23a47CfA233D32a2ABa0acE3656536572
-2024-10-27 15:40:13,407 - Funded 25 WETH from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 to bitcoin_buyer at address 0xB7c5A3F23a47CfA233D32a2ABa0acE3656536572
-2024-10-27 15:40:13,410 - Funded 1 WBTC from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 to bitcoin_buyer at address 0xB7c5A3F23a47CfA233D32a2ABa0acE3656536572
-2024-10-27 15:40:13,417 - bitcoin_buyer portfolio: {'USDC': Decimal('50000'), 'WETH': Decimal('25'), 'WBTC': Decimal('1'), 'ETH': Decimal('10')}
-2024-10-27 15:40:13,435 - ==========================================
-2024-10-27 15:40:13,435 - =============== INITIALIZE STATE =============
-[36m9999[0m
-[36m9999[0m
-[36m9999[0m
-WBTC/WETH-0.05 initializing liquidity:   0%|          | 0/8223 [00:00<?, ?it/s]WBTC/WETH-0.05 initializing liquidity:   2%|▏         | 155/8223 [00:00<00:05, 1489.87it/s]WBTC/WETH-0.05 initializing liquidity:   6%|▌         | 481/8223 [00:00<00:03, 2483.79it/s]WBTC/WETH-0.05 initializing liquidity:  10%|█         | 843/8223 [00:00<00:02, 2903.54it/s]WBTC/WETH-0.05 initializing liquidity:  14%|█▍        | 1133/8223 [00:00<00:04, 1766.07it/s]WBTC/WETH-0.05 initializing liquidity:  17%|█▋        | 1370/8223 [00:00<00:03, 1866.24it/s]WBTC/WETH-0.05 initializing liquidity:  22%|██▏       | 1779/8223 [00:00<00:02, 2398.79it/s]WBTC/WETH-0.05 initializing liquidity:  33%|███▎      | 2680/8223 [00:00<00:01, 4096.12it/s]WBTC/WETH-0.05 initializing liquidity:  42%|████▏     | 3483/8223 [00:01<00:00, 5141.53it/s]WBTC/WETH-0.05 initializing liquidity:  55%|█████▍    | 4494/8223 [00:01<00:00, 6389.50it/s]WBTC/WETH-0.05 initializing liquidity:  63%|██████▎   | 5177/8223 [00:01<00:00, 5006.20it/s]WBTC/WETH-0.05 initializing liquidity:  70%|██████▉   | 5751/8223 [00:01<00:00, 4850.64it/s]WBTC/WETH-0.05 initializing liquidity:  76%|███████▋  | 6286/8223 [00:01<00:00, 4878.70it/s]WBTC/WETH-0.05 initializing liquidity:  83%|████████▎ | 6809/8223 [00:01<00:00, 4501.64it/s]WBTC/WETH-0.05 initializing liquidity:  89%|████████▊ | 7286/8223 [00:01<00:00, 4093.13it/s]WBTC/WETH-0.05 initializing liquidity:  94%|█████████▍| 7717/8223 [00:02<00:00, 2848.44it/s]WBTC/WETH-0.05 initializing liquidity:  98%|█████████▊| 8063/8223 [00:02<00:00, 2246.22it/s]WBTC/WETH-0.05 initializing liquidity: 100%|██████████| 8223/8223 [00:02<00:00, 2983.47it/s]
-2024-10-27 15:42:51,329 - WBTC/WETH-0.05 liquidity initialized
-USDC/WETH-0.05 initializing liquidity:   0%|          | 0/41944 [00:00<?, ?it/s]USDC/WETH-0.05 initializing liquidity:   0%|          | 28/41944 [00:00<02:35, 269.51it/s]USDC/WETH-0.05 initializing liquidity:   0%|          | 55/41944 [00:00<02:57, 236.04it/s]USDC/WETH-0.05 initializing liquidity:   0%|          | 118/41944 [00:00<01:45, 397.91it/s]USDC/WETH-0.05 initializing liquidity:   1%|          | 408/41944 [00:00<00:31, 1319.70it/s]USDC/WETH-0.05 initializing liquidity:   2%|▏         | 713/41944 [00:00<00:21, 1896.67it/s]USDC/WETH-0.05 initializing liquidity:   2%|▏         | 991/41944 [00:00<00:18, 2170.34it/s]USDC/WETH-0.05 initializing liquidity:   3%|▎         | 1212/41944 [00:00<00:23, 1706.18it/s]USDC/WETH-0.05 initializing liquidity:   3%|▎         | 1399/41944 [00:00<00:25, 1604.61it/s]USDC/WETH-0.05 initializing liquidity:   4%|▎         | 1571/41944 [00:01<00:26, 1530.89it/s]USDC/WETH-0.05 initializing liquidity:   4%|▍         | 1783/41944 [00:01<00:24, 1668.18it/s]USDC/WETH-0.05 initializing liquidity:   5%|▍         | 1958/41944 [00:01<00:42, 950.01it/s] USDC/WETH-0.05 initializing liquidity:   5%|▍         | 2093/41944 [00:01<00:44, 904.41it/s]USDC/WETH-0.05 initializing liquidity:   5%|▌         | 2211/41944 [00:01<00:49, 802.56it/s]USDC/WETH-0.05 initializing liquidity:   6%|▌         | 2311/41944 [00:02<00:48, 811.71it/s]USDC/WETH-0.05 initializing liquidity:   6%|▌         | 2616/41944 [00:02<00:31, 1249.50it/s]USDC/WETH-0.05 initializing liquidity:   8%|▊         | 3152/41944 [00:02<00:18, 2144.47it/s]USDC/WETH-0.05 initializing liquidity:   8%|▊         | 3484/41944 [00:02<00:15, 2404.47it/s]USDC/WETH-0.05 initializing liquidity:  10%|▉         | 4009/41944 [00:02<00:12, 3102.32it/s]USDC/WETH-0.05 initializing liquidity:  10%|█         | 4361/41944 [00:02<00:12, 3006.14it/s]USDC/WETH-0.05 initializing liquidity:  11%|█         | 4691/41944 [00:02<00:14, 2537.39it/s]USDC/WETH-0.05 initializing liquidity:  12%|█▏        | 5082/41944 [00:02<00:12, 2839.57it/s]USDC/WETH-0.05 initializing liquidity:  13%|█▎        | 5440/41944 [00:03<00:12, 3001.03it/s]USDC/WETH-0.05 initializing liquidity:  14%|█▎        | 5764/41944 [00:03<00:12, 2860.95it/s]USDC/WETH-0.05 initializing liquidity:  15%|█▍        | 6109/41944 [00:03<00:11, 2991.79it/s]USDC/WETH-0.05 initializing liquidity:  16%|█▌        | 6627/41944 [00:03<00:09, 3555.86it/s]USDC/WETH-0.05 initializing liquidity:  17%|█▋        | 6998/41944 [00:03<00:10, 3484.64it/s]USDC/WETH-0.05 initializing liquidity:  18%|█▊        | 7358/41944 [00:03<00:10, 3147.76it/s]USDC/WETH-0.05 initializing liquidity:  19%|█▉        | 7871/41944 [00:03<00:09, 3634.65it/s]USDC/WETH-0.05 initializing liquidity:  20%|██        | 8475/41944 [00:03<00:07, 4254.36it/s]USDC/WETH-0.05 initializing liquidity:  21%|██▏       | 8917/41944 [00:03<00:08, 3707.80it/s]USDC/WETH-0.05 initializing liquidity:  22%|██▏       | 9311/41944 [00:04<00:10, 3150.69it/s]USDC/WETH-0.05 initializing liquidity:  24%|██▎       | 9952/41944 [00:04<00:08, 3881.83it/s]USDC/WETH-0.05 initializing liquidity:  25%|██▍       | 10378/41944 [00:04<00:08, 3645.20it/s]USDC/WETH-0.05 initializing liquidity:  26%|██▌       | 10770/41944 [00:04<00:08, 3611.35it/s]USDC/WETH-0.05 initializing liquidity:  27%|██▋       | 11253/41944 [00:04<00:07, 3886.86it/s]USDC/WETH-0.05 initializing liquidity:  28%|██▊       | 11827/41944 [00:04<00:06, 4339.49it/s]USDC/WETH-0.05 initializing liquidity:  30%|██▉       | 12496/41944 [00:04<00:05, 4936.28it/s]USDC/WETH-0.05 initializing liquidity:  31%|███       | 13006/41944 [00:04<00:06, 4639.14it/s]USDC/WETH-0.05 initializing liquidity:  32%|███▏      | 13484/41944 [00:05<00:06, 4643.46it/s]USDC/WETH-0.05 initializing liquidity:  33%|███▎      | 13959/41944 [00:05<00:08, 3378.77it/s]USDC/WETH-0.05 initializing liquidity:  34%|███▍      | 14351/41944 [00:05<00:08, 3141.33it/s]USDC/WETH-0.05 initializing liquidity:  35%|███▌      | 14703/41944 [00:05<00:08, 3201.69it/s]USDC/WETH-0.05 initializing liquidity:  36%|███▋      | 15235/41944 [00:05<00:07, 3668.52it/s]USDC/WETH-0.05 initializing liquidity:  38%|███▊      | 15807/41944 [00:05<00:06, 4156.70it/s]USDC/WETH-0.05 initializing liquidity:  40%|████      | 16814/41944 [00:05<00:04, 5679.91it/s]USDC/WETH-0.05 initializing liquidity:  42%|████▏     | 17448/41944 [00:05<00:04, 5810.09it/s]USDC/WETH-0.05 initializing liquidity:  43%|████▎     | 18057/41944 [00:06<00:04, 5260.69it/s]USDC/WETH-0.05 initializing liquidity:  44%|████▍     | 18611/41944 [00:06<00:05, 4610.95it/s]USDC/WETH-0.05 initializing liquidity:  46%|████▌     | 19240/41944 [00:06<00:04, 4976.71it/s]USDC/WETH-0.05 initializing liquidity:  47%|████▋     | 19824/41944 [00:06<00:04, 5153.58it/s]USDC/WETH-0.05 initializing liquidity:  49%|████▊     | 20362/41944 [00:06<00:04, 4957.62it/s]USDC/WETH-0.05 initializing liquidity:  50%|████▉     | 20878/41944 [00:06<00:04, 4971.19it/s]USDC/WETH-0.05 initializing liquidity:  51%|█████     | 21438/41944 [00:06<00:04, 5094.60it/s]USDC/WETH-0.05 initializing liquidity:  53%|█████▎    | 22284/41944 [00:06<00:03, 5969.75it/s]USDC/WETH-0.05 initializing liquidity:  55%|█████▌    | 23239/41944 [00:06<00:02, 6920.29it/s]USDC/WETH-0.05 initializing liquidity:  57%|█████▋    | 23942/41944 [00:07<00:02, 6447.30it/s]USDC/WETH-0.05 initializing liquidity:  59%|█████▊    | 24600/41944 [00:07<00:02, 6279.65it/s]USDC/WETH-0.05 initializing liquidity:  61%|██████    | 25525/41944 [00:07<00:02, 7008.81it/s]USDC/WETH-0.05 initializing liquidity:  63%|██████▎   | 26428/41944 [00:07<00:02, 7462.84it/s]USDC/WETH-0.05 initializing liquidity:  65%|██████▍   | 27183/41944 [00:07<00:02, 7243.16it/s]USDC/WETH-0.05 initializing liquidity:  67%|██████▋   | 27914/41944 [00:07<00:02, 7010.93it/s]USDC/WETH-0.05 initializing liquidity:  68%|██████▊   | 28621/41944 [00:07<00:01, 6810.89it/s]USDC/WETH-0.05 initializing liquidity:  70%|██████▉   | 29306/41944 [00:07<00:01, 6465.52it/s]USDC/WETH-0.05 initializing liquidity:  71%|███████▏  | 29957/41944 [00:07<00:01, 6145.59it/s]USDC/WETH-0.05 initializing liquidity:  73%|███████▎  | 30576/41944 [00:08<00:02, 5115.10it/s]USDC/WETH-0.05 initializing liquidity:  75%|███████▍  | 31316/41944 [00:08<00:01, 5622.13it/s]USDC/WETH-0.05 initializing liquidity:  76%|███████▌  | 31908/41944 [00:08<00:01, 5318.25it/s]USDC/WETH-0.05 initializing liquidity:  77%|███████▋  | 32462/41944 [00:08<00:02, 4080.71it/s]USDC/WETH-0.05 initializing liquidity:  78%|███████▊  | 32924/41944 [00:08<00:02, 3926.66it/s]USDC/WETH-0.05 initializing liquidity:  80%|███████▉  | 33352/41944 [00:08<00:02, 3702.38it/s]USDC/WETH-0.05 initializing liquidity:  81%|████████  | 33857/41944 [00:08<00:02, 3973.04it/s]USDC/WETH-0.05 initializing liquidity:  82%|████████▏ | 34279/41944 [00:09<00:02, 3522.24it/s]USDC/WETH-0.05 initializing liquidity:  83%|████████▎ | 34694/41944 [00:09<00:01, 3634.48it/s]USDC/WETH-0.05 initializing liquidity:  84%|████████▎ | 35076/41944 [00:09<00:02, 3296.81it/s]USDC/WETH-0.05 initializing liquidity:  84%|████████▍ | 35441/41944 [00:09<00:01, 3340.19it/s]USDC/WETH-0.05 initializing liquidity:  85%|████████▌ | 35787/41944 [00:09<00:02, 2781.86it/s]USDC/WETH-0.05 initializing liquidity:  86%|████████▌ | 36107/41944 [00:09<00:02, 2839.33it/s]USDC/WETH-0.05 initializing liquidity:  88%|████████▊ | 36741/41944 [00:09<00:01, 3664.36it/s]USDC/WETH-0.05 initializing liquidity:  89%|████████▊ | 37135/41944 [00:10<00:01, 3547.20it/s]USDC/WETH-0.05 initializing liquidity:  90%|████████▉ | 37561/41944 [00:10<00:01, 3699.27it/s]USDC/WETH-0.05 initializing liquidity:  90%|█████████ | 37946/41944 [00:10<00:01, 3400.27it/s]USDC/WETH-0.05 initializing liquidity:  91%|█████████▏| 38300/41944 [00:10<00:01, 3327.90it/s]USDC/WETH-0.05 initializing liquidity:  92%|█████████▏| 38642/41944 [00:10<00:01, 3001.75it/s]USDC/WETH-0.05 initializing liquidity:  93%|█████████▎| 39041/41944 [00:10<00:00, 3210.46it/s]USDC/WETH-0.05 initializing liquidity:  94%|█████████▍| 39373/41944 [00:10<00:00, 2650.16it/s]USDC/WETH-0.05 initializing liquidity:  95%|█████████▍| 39659/41944 [00:11<00:01, 1944.18it/s]USDC/WETH-0.05 initializing liquidity:  95%|█████████▌| 39892/41944 [00:11<00:01, 1857.55it/s]USDC/WETH-0.05 initializing liquidity:  96%|█████████▌| 40103/41944 [00:11<00:01, 1487.89it/s]USDC/WETH-0.05 initializing liquidity:  96%|█████████▌| 40278/41944 [00:11<00:01, 1487.30it/s]USDC/WETH-0.05 initializing liquidity:  96%|█████████▋| 40445/41944 [00:11<00:01, 1397.26it/s]USDC/WETH-0.05 initializing liquidity:  97%|█████████▋| 40597/41944 [00:11<00:01, 1280.73it/s]USDC/WETH-0.05 initializing liquidity:  97%|█████████▋| 40733/41944 [00:12<00:01, 1204.29it/s]USDC/WETH-0.05 initializing liquidity:  97%|█████████▋| 40858/41944 [00:12<00:00, 1122.69it/s]USDC/WETH-0.05 initializing liquidity:  98%|█████████▊| 40973/41944 [00:12<00:00, 1059.43it/s]USDC/WETH-0.05 initializing liquidity:  98%|█████████▊| 41081/41944 [00:12<00:00, 963.03it/s] USDC/WETH-0.05 initializing liquidity:  98%|█████████▊| 41199/41944 [00:12<00:00, 999.15it/s]USDC/WETH-0.05 initializing liquidity:  98%|█████████▊| 41301/41944 [00:12<00:00, 873.62it/s]USDC/WETH-0.05 initializing liquidity:  99%|█████████▊| 41392/41944 [00:12<00:00, 758.73it/s]USDC/WETH-0.05 initializing liquidity:  99%|█████████▉| 41472/41944 [00:13<00:00, 645.26it/s]USDC/WETH-0.05 initializing liquidity:  99%|█████████▉| 41541/41944 [00:13<00:00, 626.63it/s]USDC/WETH-0.05 initializing liquidity:  99%|█████████▉| 41606/41944 [00:13<00:00, 538.49it/s]USDC/WETH-0.05 initializing liquidity:  99%|█████████▉| 41663/41944 [00:13<00:00, 513.03it/s]USDC/WETH-0.05 initializing liquidity: 100%|█████████▉| 41746/41944 [00:13<00:00, 577.06it/s]USDC/WETH-0.05 initializing liquidity: 100%|█████████▉| 41807/41944 [00:13<00:00, 526.72it/s]USDC/WETH-0.05 initializing liquidity: 100%|█████████▉| 41863/41944 [00:13<00:00, 528.22it/s]USDC/WETH-0.05 initializing liquidity: 100%|█████████▉| 41918/41944 [00:14<00:00, 411.81it/s]USDC/WETH-0.05 initializing liquidity: 100%|██████████| 41944/41944 [00:14<00:00, 2959.15it/s]
-2024-10-27 15:43:05,504 - USDC/WETH-0.05 liquidity initialized
-2024-10-27 15:43:17,867 - USDC/WETH-0.05 price initialized
-2024-10-27 15:43:17,955 - WBTC/WETH-0.05 price initialized
-2024-10-27 15:43:18,059 - ==========================================
-/Users/johncosnett/compass_labs/policy/run.py:82: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
-  backtest_run(
-2024-10-27 15:43:19,015 - Started providing data to the dashboard on port=9999!
-2024-10-27 15:43:19,017 - server listening on 0.0.0.0:9999
-2024-10-27 15:43:19,017 - server listening on [::]:9999
-
-
-Running simulation::   0%|          | 0/306 [00:00<?, ?it/s]2024-10-27 15:43:20,091 - ======= BLOCK 20129224: 2 ACTIONS =======
-2024-10-27 15:43:20,091 - Trade made by bitcoin_buyer of (49995.0000000000005506706202140776440501213073730468750000 USDC, 0 WETH) to pool USDC/WETH-0.05
-2024-10-27 15:43:20,104 - Trade made by bitcoin_buyer of (0 WETH, 12.5 WBTC) to pool WBTC/WETH-0.05
-2024-10-27 15:43:20,128 - Trace of the transaction that couldn't get executed: 
-Running simulation::   0%|          | 0/306 [00:00<?, ?it/s]
-self.agent.erc20_portfolio()['WBTC'] --> 1
-amount_to_dump --> 49995.0000000000005506706202140776440501213073730468750000
-amount_of_dollars --> 50000
-agent portfolio before buying --------------------> --> {'USDC': Decimal('50000'), 'WETH': Decimal('25'), 'WBTC': Decimal('1'), 'ETH': Decimal('10')}
-buying wrapped bitoins with USDC in USDC/WETH-0.05
-amount_to_dump --> 12.5
-amount_of_WETH --> 25
-agent portfolio before buying -------------------> --> {'USDC': Decimal('50000'), 'WETH': Decimal('25'), 'WBTC': Decimal('1'), 'ETH': Decimal('10')}
-buying wrapped bitoins with WETH in WBTC/WETH-0.05
-Total wealth in USDC: 138975.866070599136123753080719031717283074220989430054369903650949072275047650
-[33minit_w : $ 138975.87[0m
-Total wealth in USDC: 138975.866070599136123753080719031717283074220989430054369903650949072275047650
-[33mcurrent_w_HODL : $ 138975.87[0m
-Total wealth in USDC: 138975.866070599136123753080719031717283074220989430054369903650949072275047650
-[33mcurrent_w : $ 138975.87[0m
-initial_wealth --> 138975.866070599136123753080719031717283074220989430054369903650949072275047650
-HODL_current_wealth --> 138975.866070599136123753080719031717283074220989430054369903650949072275047650
-current_wealth --> 138975.866070599136123753080719031717283074220989430054369903650949072275047650
-[35mPnL : $ 0.00[0m
-[35mPnL HODL : $ 0.00[0m
-[36mPnL % : 0.00 %[0m
-[36mPnL_HODL % : 0.00 %[0m
-Traceback (most recent call last):
-  File "/Users/johncosnett/compass_labs/policy/run.py", line 82, in <module>
-    backtest_run(
-  File "dojo/runners/backtest_runner.py", line 117, in dojo.runners.backtest_runner.backtest_run
-  File "dojo/environments/base_environments.py", line 339, in dojo.environments.base_environments.BaseEnvironment.step
-  File "dojo/environments/uniswapV3.py", line 1465, in dojo.environments.uniswapV3.UniswapV3Env._step
-  File "dojo/environments/uniswapV3.py", line 1281, in dojo.environments.uniswapV3.UniswapV3Env._trade
-  File "dojo/environments/uniswapV3.py", line 1266, in dojo.environments.uniswapV3.UniswapV3Env._trade
-  File "dojo/network/base_backend.py", line 380, in dojo.network.base_backend.BaseBackend.contract_transact
-  File "dojo/network/base_backend.py", line 367, in dojo.network.base_backend.BaseBackend.contract_transact
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/contract/contract.py", line 323, in transact
-    return transact_with_contract_function(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/contract/utils.py", line 172, in transact_with_contract_function
-    txn_hash = w3.eth.send_transaction(transact_transaction)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/eth/eth.py", line 386, in send_transaction
-    return self._send_transaction(transaction)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/module.py", line 75, in caller
-    result = w3.manager.request_blocking(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/manager.py", line 329, in request_blocking
-    response = self._make_request(method, params)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/manager.py", line 213, in _make_request
-    return request_func(method, params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/middleware/gas_price_strategy.py", line 100, in middleware
-    return make_request(method, (transaction,))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/middleware/formatting.py", line 126, in middleware
-    response = make_request(method, params)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/middleware/attrdict.py", line 43, in middleware
-    response = make_request(method, params)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/middleware/formatting.py", line 126, in middleware
-    response = make_request(method, params)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/middleware/formatting.py", line 126, in middleware
-    response = make_request(method, params)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/middleware/buffered_gas_estimate.py", line 40, in middleware
-    hex(get_buffered_gas_estimate(w3, transaction)),
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/_utils/transactions.py", line 158, in get_buffered_gas_estimate
-    gas_estimate = w3.eth.estimate_gas(gas_estimate_transaction)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/eth/eth.py", line 316, in estimate_gas
-    return self._estimate_gas(transaction, block_identifier, state_override)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/module.py", line 75, in caller
-    result = w3.manager.request_blocking(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/manager.py", line 330, in request_blocking
-    return self.formatted_response(
-           ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/manager.py", line 291, in formatted_response
-    apply_error_formatters(error_formatters, response)
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/manager.py", line 104, in apply_error_formatters
-    formatted_resp = pipe(response, error_formatters)
-                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "cytoolz/functoolz.pyx", line 685, in cytoolz.functoolz.pipe
-  File "cytoolz/functoolz.pyx", line 660, in cytoolz.functoolz.c_pipe
-  File "/Users/johncosnett/compass_labs/policy/.venv/lib/python3.12/site-packages/web3/_utils/error_formatters_utils.py", line 162, in raise_contract_logic_error_on_revert
-    raise ContractLogicError(message, data=data)
-web3.exceptions.ContractLogicError: ('execution reverted: revert: STF', '0x08c379a0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000035354460000000000000000000000000000000000000000000000000000000000')

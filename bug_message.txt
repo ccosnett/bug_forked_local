@@ -1,0 +1,226 @@
+{
+	"name": "ContractLogicError",
+	"message": "('execution reverted: revert: STF', '0x08c379a0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000035354460000000000000000000000000000000000000000000000000000000000')",
+	"stack": "---------------------------------------------------------------------------
+ContractLogicError                        Traceback (most recent call last)
+Cell In[2], line 1
+----> 1 backtest_run(
+      2         env,
+      3         [policy],
+      4         dashboard_server_port=dashboard_server_port,
+      5         auto_close=auto_close,
+      6         simulation_status_bar=simulation_status_bar,
+      7     )
+
+File dojo/runners/backtest_runner.py:117, in dojo.runners.backtest_runner.backtest_run()
+
+File dojo/environments/base_environments.py:339, in dojo.environments.base_environments.BaseEnvironment.step()
+
+File dojo/environments/uniswapV3.py:1465, in dojo.environments.uniswapV3.UniswapV3Env._step()
+
+File dojo/environments/uniswapV3.py:1281, in dojo.environments.uniswapV3.UniswapV3Env._trade()
+
+File dojo/environments/uniswapV3.py:1266, in dojo.environments.uniswapV3.UniswapV3Env._trade()
+
+File dojo/network/base_backend.py:380, in dojo.network.base_backend.BaseBackend.contract_transact()
+
+File dojo/network/base_backend.py:367, in dojo.network.base_backend.BaseBackend.contract_transact()
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/contract/contract.py:323, in ContractFunction.transact(self, transaction)
+    321 def transact(self, transaction: Optional[TxParams] = None) -> HexBytes:
+    322     setup_transaction = self._transact(transaction)
+--> 323     return transact_with_contract_function(
+    324         self.address,
+    325         self.w3,
+    326         self.function_identifier,
+    327         setup_transaction,
+    328         self.contract_abi,
+    329         self.abi,
+    330         *self.args,
+    331         **self.kwargs,
+    332     )
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/contract/utils.py:172, in transact_with_contract_function(address, w3, function_name, transaction, contract_abi, fn_abi, *args, **kwargs)
+    157 \"\"\"
+    158 Helper function for interacting with a contract function by sending a
+    159 transaction.
+    160 \"\"\"
+    161 transact_transaction = prepare_transaction(
+    162     address,
+    163     w3,
+   (...)
+    169     fn_kwargs=kwargs,
+    170 )
+--> 172 txn_hash = w3.eth.send_transaction(transact_transaction)
+    173 return txn_hash
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/eth/eth.py:386, in Eth.send_transaction(self, transaction)
+    385 def send_transaction(self, transaction: TxParams) -> HexBytes:
+--> 386     return self._send_transaction(transaction)
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/module.py:75, in retrieve_blocking_method_call_fn.<locals>.caller(*args, **kwargs)
+     68     return LogFilter(eth_module=module, filter_id=err.filter_id)
+     70 (
+     71     result_formatters,
+     72     error_formatters,
+     73     null_result_formatters,
+     74 ) = response_formatters
+---> 75 result = w3.manager.request_blocking(
+     76     method_str, params, error_formatters, null_result_formatters
+     77 )
+     78 return apply_result_formatters(result_formatters, result)
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/manager.py:329, in RequestManager.request_blocking(self, method, params, error_formatters, null_result_formatters)
+    319 def request_blocking(
+    320     self,
+    321     method: Union[RPCEndpoint, Callable[..., RPCEndpoint]],
+   (...)
+    324     null_result_formatters: Optional[Callable[..., Any]] = None,
+    325 ) -> Any:
+    326     \"\"\"
+    327     Make a synchronous request using the provider
+    328     \"\"\"
+--> 329     response = self._make_request(method, params)
+    330     return self.formatted_response(
+    331         response, params, error_formatters, null_result_formatters
+    332     )
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/manager.py:213, in RequestManager._make_request(self, method, params)
+    209 request_func = provider.request_func(
+    210     cast(\"Web3\", self.w3), cast(MiddlewareOnion, self.middleware_onion)
+    211 )
+    212 self.logger.debug(f\"Making request. Method: {method}\")
+--> 213 return request_func(method, params)
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/middleware/gas_price_strategy.py:100, in gas_price_strategy_middleware.<locals>.middleware(method, params)
+     96     latest_block = w3.eth.get_block(\"latest\")
+     97     transaction = validate_transaction_params(
+     98         transaction, latest_block, generated_gas_price
+     99     )
+--> 100     return make_request(method, (transaction,))
+    101 return make_request(method, params)
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/middleware/formatting.py:126, in construct_web3_formatting_middleware.<locals>.formatter_middleware.<locals>.middleware(method, params)
+    124     formatter = request_formatters[method]
+    125     params = formatter(params)
+--> 126 response = make_request(method, params)
+    128 return _apply_response_formatters(
+    129     method,
+    130     formatters[\"result_formatters\"],
+    131     formatters[\"error_formatters\"],
+    132     response,
+    133 )
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/middleware/attrdict.py:43, in attrdict_middleware.<locals>.middleware(method, params)
+     42 def middleware(method: RPCEndpoint, params: Any) -> RPCResponse:
+---> 43     response = make_request(method, params)
+     45     if \"result\" in response:
+     46         return assoc(
+     47             response, \"result\", AttributeDict.recursive(response[\"result\"])
+     48         )
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/middleware/formatting.py:126, in construct_web3_formatting_middleware.<locals>.formatter_middleware.<locals>.middleware(method, params)
+    124     formatter = request_formatters[method]
+    125     params = formatter(params)
+--> 126 response = make_request(method, params)
+    128 return _apply_response_formatters(
+    129     method,
+    130     formatters[\"result_formatters\"],
+    131     formatters[\"error_formatters\"],
+    132     response,
+    133 )
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/middleware/formatting.py:126, in construct_web3_formatting_middleware.<locals>.formatter_middleware.<locals>.middleware(method, params)
+    124     formatter = request_formatters[method]
+    125     params = formatter(params)
+--> 126 response = make_request(method, params)
+    128 return _apply_response_formatters(
+    129     method,
+    130     formatters[\"result_formatters\"],
+    131     formatters[\"error_formatters\"],
+    132     response,
+    133 )
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/middleware/buffered_gas_estimate.py:40, in buffered_gas_estimate_middleware.<locals>.middleware(method, params)
+     35     transaction = params[0]
+     36     if \"gas\" not in transaction:
+     37         transaction = assoc(
+     38             transaction,
+     39             \"gas\",
+---> 40             hex(get_buffered_gas_estimate(w3, transaction)),
+     41         )
+     42         return make_request(method, [transaction])
+     43 return make_request(method, params)
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/_utils/transactions.py:158, in get_buffered_gas_estimate(w3, transaction, gas_buffer)
+    153 def get_buffered_gas_estimate(
+    154     w3: \"Web3\", transaction: TxParams, gas_buffer: int = 100000
+    155 ) -> int:
+    156     gas_estimate_transaction = cast(TxParams, dict(**transaction))
+--> 158     gas_estimate = w3.eth.estimate_gas(gas_estimate_transaction)
+    160     gas_limit = get_block_gas_limit(w3)
+    162     if gas_estimate > gas_limit:
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/eth/eth.py:316, in Eth.estimate_gas(self, transaction, block_identifier, state_override)
+    310 def estimate_gas(
+    311     self,
+    312     transaction: TxParams,
+    313     block_identifier: Optional[BlockIdentifier] = None,
+    314     state_override: Optional[CallOverride] = None,
+    315 ) -> int:
+--> 316     return self._estimate_gas(transaction, block_identifier, state_override)
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/module.py:75, in retrieve_blocking_method_call_fn.<locals>.caller(*args, **kwargs)
+     68     return LogFilter(eth_module=module, filter_id=err.filter_id)
+     70 (
+     71     result_formatters,
+     72     error_formatters,
+     73     null_result_formatters,
+     74 ) = response_formatters
+---> 75 result = w3.manager.request_blocking(
+     76     method_str, params, error_formatters, null_result_formatters
+     77 )
+     78 return apply_result_formatters(result_formatters, result)
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/manager.py:330, in RequestManager.request_blocking(self, method, params, error_formatters, null_result_formatters)
+    326 \"\"\"
+    327 Make a synchronous request using the provider
+    328 \"\"\"
+    329 response = self._make_request(method, params)
+--> 330 return self.formatted_response(
+    331     response, params, error_formatters, null_result_formatters
+    332 )
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/manager.py:291, in RequestManager.formatted_response(response, params, error_formatters, null_result_formatters)
+    286     if not isinstance(error.get(\"message\"), str):
+    287         _raise_bad_response_format(
+    288             response, \"error['message'] must be a string\"
+    289         )
+--> 291     apply_error_formatters(error_formatters, response)
+    293     raise ValueError(error)
+    295 # Format and validate results
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/manager.py:104, in apply_error_formatters(error_formatters, response)
+     99 def apply_error_formatters(
+    100     error_formatters: Callable[..., Any],
+    101     response: RPCResponse,
+    102 ) -> RPCResponse:
+    103     if error_formatters:
+--> 104         formatted_resp = pipe(response, error_formatters)
+    105         return formatted_resp
+    106     else:
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/cytoolz/functoolz.pyx:685, in cytoolz.functoolz.pipe()
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/cytoolz/functoolz.pyx:660, in cytoolz.functoolz.c_pipe()
+
+File ~/compass_labs/bug_forked_local/.venv/lib/python3.12/site-packages/web3/_utils/error_formatters_utils.py:162, in raise_contract_logic_error_on_revert(response)
+    159 if message_present:
+    160     # Geth Revert with error message and code 3 case:
+    161     if error.get(\"code\") == 3:
+--> 162         raise ContractLogicError(message, data=data)
+    163     # Geth Revert without error message case:
+    164     elif \"execution reverted\" in message:
+
+ContractLogicError: ('execution reverted: revert: STF', '0x08c379a0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000035354460000000000000000000000000000000000000000000000000000000000')"
+}

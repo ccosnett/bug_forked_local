@@ -234,7 +234,7 @@ def add_signals(obs, agent):
 ########################################################################
 ########################################################################
 
-class buy_bitcoins(BasePolicy):  # type: ignore
+class SingleAction(BasePolicy):  # type: ignore
     """A policy that buys wrapped bitcoins.
     """
 
@@ -246,7 +246,7 @@ class buy_bitcoins(BasePolicy):  # type: ignore
         """
         super().__init__(agent)
         # rate of dumping
-        self.dump_rate = Decimal(0.9999)
+        self.dump_rate = Decimal(0.0001)
 
     
     def dump_dollars(self, agent):
@@ -268,7 +268,7 @@ class buy_bitcoins(BasePolicy):  # type: ignore
             
             action = UniswapV3Trade(agent=agent,
                               pool = "USDC/WETH-0.05",
-                              quantities=(amount_to_dump, Decimal(0))
+                              quantities=(Decimal(0.01), Decimal(0))
                               )
             return action
         
@@ -284,7 +284,7 @@ class buy_bitcoins(BasePolicy):  # type: ignore
 
         initial_amount_of_WETH = self.agent.initial_portfolio['WETH']
         amount_of_WETH = self.agent.erc20_portfolio()['WETH']
-        amount_to_dump = amount_of_WETH * Decimal(0.5)
+        amount_to_dump = amount_of_WETH * Decimal(0.000001)
 
         echo(amount_to_dump,"amount_to_dump")
 
@@ -299,7 +299,7 @@ class buy_bitcoins(BasePolicy):  # type: ignore
             #amount = amount_of_WETH * self.dump_rate
             action = UniswapV3Trade(agent=agent,
                               pool = "WBTC/WETH-0.05",
-                              quantities=(Decimal(0), amount_to_dump)
+                              quantities=(Decimal(0), Decimal(0.0001))
                               )
             return action
 
@@ -311,16 +311,19 @@ class buy_bitcoins(BasePolicy):  # type: ignore
         
 
     def predict(self, obs):
-        echo(self.agent.erc20_portfolio()['WBTC'],'self.agent.erc20_portfolio()[\'WBTC\']')
+        #echo(self.agent.erc20_portfolio()['WBTC'],'self.agent.erc20_portfolio()[\'WBTC\']')
 
-        action_sequence = flatten([
-                self.dump_dollars(self.agent),
-                self.buy_bitcoin(self.agent)
-                ])
+        # action_sequence = flatten([
+        #         self.dump_dollars(self.agent),
+        #         self.buy_bitcoin(self.agent)
+        #         ])
         
         add_signals(obs = obs, agent=self.agent)
         
-        return action_sequence
+        return [UniswapV3Trade(agent=self.agent,
+                              pool = "WBTC/WETH-0.05",
+                              quantities=(Decimal(0), Decimal(0.01))
+                              )]
 
 
         
