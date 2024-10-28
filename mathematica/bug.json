@@ -1,0 +1,32 @@
+{
+    "params": {
+        "environment": "UniswapV3Env",
+        "start_date": "2024-06-20 00:00:00+00:00",
+        "end_date": "2024-06-20 01:01:00+00:00",
+        "start_block": 20129224,
+        "end_block": 20129529,
+        "title": "no title",
+        "description": "no description",
+        "agents": [
+            {
+                "name": "bitcoin_buyer",
+                "address": "0xa23544aF2d7c04a9d22bBeBBAF0dfd722d33E229"
+            }
+        ],
+        "pools": [
+            {
+                "name": "USDC/WETH-0.05",
+                "token0": "USDC",
+                "token1": "WETH",
+                "fee": 0
+            },
+            {
+                "name": "WBTC/WETH-0.05",
+                "token0": "WETH",
+                "token1": "WBTC",
+                "fee": 0
+            }
+        ]
+    },
+    "block_data": {}
+}

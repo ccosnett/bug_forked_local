@@ -1,14 +1,11 @@
-# pip install colorama to run
-########## CODE ASSUMPTIONS #################################################
-########################################################################
-#
-# add these lines to your "run.py" file
-#
-# from policy import *
-# pools = ["USDC/WETH-0.05", "WBTC/WETH-0.05"]
-# agent1 = UniswapV3PoolWealthAgent(initial_portfolio= {"USDC": Decimal(50_000), "WETH": Decimal(25),"WBTC": Decimal(1)},  name="gary")
-# 
-# 
+from typing import List
+
+from dojo.actions.base_action import BaseAction
+from dojo.agents.base_agent import BaseAgent
+from dojo.observations import BaseObservation
+from dojo.policies import BasePolicy
+
+
 ########################################################################
 ########################################################################
 #
@@ -32,283 +29,24 @@ from dojo.environments.uniswapV3 import UniswapV3Observation
 #######################################################################
 # helper functions:
 ########################################################################
-def echo(expr, label=None):
-    """
-    prints expr and returns expr
-    """
-    expr = str(expr)
-    if label:
-        print(f"{label} --> {expr}")
-    else:
-        print(expr)
-    return expr
-
-# this one needs a: "pip install colorama"
-def echo_yellow(expr, label=None):
-    """
-    prints expr and returns expr
-    """
-    col = Fore.YELLOW
-    expr = str(round(expr, 2))
-
-    if label:
-        print(col + f"{label} : $ {expr}" + Style.RESET_ALL)
-    else:
-        print(col + expr + Style.RESET_ALL)
-    return expr
-
-def echo_magenta(expr, label=None):
-    """
-    prints expr and returns expr
-    """
-    col = Fore.MAGENTA
-    expr = str(round(expr, 2))
-
-    if label:
-        print(col + f"{label} : $ {expr}" + Style.RESET_ALL)
-    else:
-        print(col + expr + Style.RESET_ALL)
-    return expr
-
-def echo_cyan(expr, label=None):
-    """
-    prints expr and returns expr
-    """
-    col = Fore.CYAN
-    expr = str(round(expr, 2))
-
-    if label:
-        print(col + f"{label} : {expr} %" + Style.RESET_ALL)
-    else:
-        print(col + expr + Style.RESET_ALL)
-    return expr
-
-def flatten(nested_list):
-    result = []
-    for item in nested_list:
-        if isinstance(item, list):
-            result.extend(flatten(item))
-        else:
-            result.append(item)
-    return result
-
-
-########################################################################
-###### METRIC FUNCTIONS ###############################################
-########################################################################
-
-# need to be refactored as they aren't readable so don't read em
-
-def total_wealth(portfolio, conversions):
-
-    #echo(portfolio,'portfolio')
-    # Compute USDC per WETH
-    USDC_per_WETH = 1 / conversions['USDC/WETH-0.05']  # 1 / 0.000280
-    # USDC_per_WETH = 3571.4285714285716
-
-    # Compute USDC per WBTC
-    WETH_per_WBTC = conversions['WBTC/WETH-0.05']  # 18.3
-    USDC_per_WBTC = WETH_per_WBTC * USDC_per_WETH  # 18.3 * 3571.4285714285716
-
-    # Now compute total wealth
-    total_USDC = portfolio.get('USDC', 0)
-    total_USDC += portfolio.get('WETH', 0) * USDC_per_WETH
-    total_USDC += portfolio.get('WBTC', 0) * USDC_per_WBTC
-
-    print("Total wealth in USDC:", total_USDC)
-
-
-    #out1 = total_wealth(portfolio, conversions)
-    return total_USDC
-
-def portfol(agent):
-    return agent.erc20_portfolio()
-
-
-def conversions(obs):
-    #pools =  obs.pools
-    d = {}
-    d["WBTC/WETH-0.05"] = obs.price('WBTC', 'WETH', "WBTC/WETH-0.05")
-    d["USDC/WETH-0.05"] = obs.price('USDC', 'WETH', 'USDC/WETH-0.05')
-    return d
-
-def tw(obs, agent):
-    portf = portfol(agent)
-    convers = conversions(obs)
-    return total_wealth(portf, convers)
-
-def tw_p(obs, p):
-    portf = p
-    convers = conversions(obs)
-    return total_wealth(portf, convers)
-
-
-def initial_agent_wealth(obs, agent):
-        if obs.block == 20129224:
-            init_w = tw(obs, agent)
-            
-            global welt
-            welt = init_w
-            #echo_magenta(welt, "global welt set")
-        else:
-            init_w = welt 
-            #echo_magenta(init_w, "global welt set")
-        
-        return init_w
-
-
-def current_agent_wealth(obs, agent):
-    return tw(obs, agent)
-    
-def HODL_agent_wealth(obs, agent):
-    
-    return tw_p(obs, agent.initial_portfolio)
-
-def profit_n_loss(current_wealth, initial_wealth):
-    out1 = current_wealth - initial_wealth
-    out2 = out1
-    return out2
-
-def HODL_profit_n_loss(HODL_current_wealth, initial_wealth):
-    out1 = HODL_current_wealth - initial_wealth
-    out2 = out1
-    return out2
-
-
-def profit_n_loss_percentage(current_wealth, initial_wealth):
-    out1 = 100*(current_wealth - initial_wealth)/initial_wealth
-    return out1
-
-def HODL_profit_n_loss_percentage(HODL_current_wealth, initial_wealth):
-    out1 = 100*(HODL_current_wealth - initial_wealth)/initial_wealth
-    return out1
-
-
-def sig(sig, name, obs):
-    obs.add_signal(name, sig)
-    return None
-
-def add_signals(obs, agent):
-
-    init_w = initial_agent_wealth(obs, agent)
-    echo_yellow(init_w, 'init_w')
-
-    current_w_HODL = HODL_agent_wealth(obs, agent)
-    echo_yellow(current_w_HODL, 'current_w_HODL')
-        
-    current_w = current_agent_wealth(obs, agent)
-    echo_yellow(current_w,'current_w')
-
-    PnL = profit_n_loss(current_w, init_w)
-    PnL_HODL = HODL_profit_n_loss(current_w_HODL, init_w)
-    PnLP = profit_n_loss_percentage(current_w, init_w)
-    PnLP_HODL = HODL_profit_n_loss_percentage(current_w_HODL, init_w)
-
-
-    echo(init_w,"initial_wealth")
-    echo(current_w_HODL,"HODL_current_wealth")
-    echo(current_w, "current_wealth")
-    
-    echo_magenta(PnL, "PnL")
-    echo_magenta(PnL_HODL, "PnL HODL")
-    echo_cyan(PnLP, "PnL %")
-    echo_cyan(PnLP_HODL, "PnL_HODL %")
-
-    sig(PnL, "PnL", obs)
-    sig(PnLP, "PnL Percentage", obs)
-    sig(init_w,"initial_wealth",obs)
-    sig(PnLP_HODL,"PnL Percentage HODL",obs)
-    sig(PnL_HODL,"PnL HODL",obs)
-    #port = agent.erc20_portfolio()
-    #echo_yellow(port,'port')
-    #echo_yellow(agent,'self')
-    
-
-
-
-########################################################################
-########################################################################
-
-#       THE POLICY       ###############################################
-
-########################################################################
-########################################################################
 
 class SingleAction(BasePolicy):  # type: ignore
-    """A policy that buys wrapped bitcoins.
+    """A policy that executes a single action.
+
+    This is useful for testing the impact of a single action in an environment. For
+    example, you might want to see what the final price in a UniswapV3 pool would be if
+    you executed a single swap.
     """
 
-    def __init__(self, agent: BaseAgent):
+    def __init__(self, agent: BaseAgent) -> None:  # type: ignore
         """Initialize the policy.
 
         :param agent: The agent which is using this policy.
         :param action: The action to execute.
         """
         super().__init__(agent)
-        # rate of dumping
-        self.dump_rate = Decimal(0.0001)
-
+        #self.action = action
     
-    def dump_dollars(self, agent):
-        
-        initial_amount_of_dollars = self.agent.initial_portfolio['USDC']
-        amount_of_dollars = self.agent.erc20_portfolio()['USDC']
-        amount_to_dump = initial_amount_of_dollars * self.dump_rate
-
-        echo(amount_to_dump,"amount_to_dump")
-
-        echo(amount_of_dollars,"amount_of_dollars")
-
-        echo(self.agent.portfolio(),'agent portfolio before buying -------------------->')
-
-        if amount_of_dollars > amount_to_dump + Decimal(0.5):
-
-            
-            print('buying wrapped bitoins with USDC in USDC/WETH-0.05')
-            
-            action = UniswapV3Trade(agent=agent,
-                              pool = "USDC/WETH-0.05",
-                              quantities=(Decimal(0.01), Decimal(0))
-                              )
-            return action
-        
-        else:
-            echo('dump_dollars: do nothing')
-            return []
-
-        
-
-    
-    
-    def buy_bitcoin(self, agent):
-
-        initial_amount_of_WETH = self.agent.initial_portfolio['WETH']
-        amount_of_WETH = self.agent.erc20_portfolio()['WETH']
-        amount_to_dump = amount_of_WETH * Decimal(0.000001)
-
-        echo(amount_to_dump,"amount_to_dump")
-
-        echo(amount_of_WETH,"amount_of_WETH")
-
-        echo(self.agent.portfolio(),'agent portfolio before buying ------------------->')
-        
-        
-        if amount_of_WETH > amount_to_dump + Decimal(0.0001):
-            print('buying wrapped bitoins with WETH in WBTC/WETH-0.05')
-            # amount to sell
-            #amount = amount_of_WETH * self.dump_rate
-            action = UniswapV3Trade(agent=agent,
-                              pool = "WBTC/WETH-0.05",
-                              quantities=(Decimal(0), Decimal(0.0001))
-                              )
-            return action
-
-        else:
-            echo('buy_bitcoin: do nothing')
-            return []
-        
-
-        
 
     def predict(self, obs):
         #echo(self.agent.erc20_portfolio()['WBTC'],'self.agent.erc20_portfolio()[\'WBTC\']')
@@ -318,18 +56,37 @@ class SingleAction(BasePolicy):  # type: ignore
         #         self.buy_bitcoin(self.agent)
         #         ])
         
-        add_signals(obs = obs, agent=self.agent)
+        #add_signals(obs = obs, agent=self.agent)
         
         return [UniswapV3Trade(agent=self.agent,
                               pool = "WBTC/WETH-0.05",
-                              quantities=(Decimal(0), Decimal(0.01))
+                              quantities=(Decimal(0.5), Decimal(0))
                               )]
 
 
-        
 
-    #def predict(self, obs):
-#        return 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

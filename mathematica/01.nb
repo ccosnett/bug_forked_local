@@ -1,0 +1,159 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6062,        151]
+NotebookOptionsPosition[      5285,        129]
+NotebookOutlinePosition[      5891,        149]
+CellTagsIndexPosition[      5848,        146]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"out1", "=", 
+   RowBox[{"Import", "[", "\"\<./01.json\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"\"\<block_data\>\"", "/.", "out1"}]}], "Input",
+ CellChangeTimes->{{3.939043171599577*^9, 3.939043204045703*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"325cb689-ee21-43a9-ab05-3611340ae06b"],
+
+Cell[BoxData[
+ TemplateBox[<|"shortenedBoxes" -> TagBox[
+     RowBox[{"{", 
+       RowBox[{
+         RowBox[{"\"20129224\"", "\[Rule]", 
+           RowBox[{"{", 
+             RowBox[{
+               RowBox[{"\"agents\"", "\[Rule]", 
+                 RowBox[{"{", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"\"reward\"", "\[Rule]", "1.`*^9"}], ",", 
+                    RowBox[{"\"uniswap\"", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"\"actions\"", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"\"type\"", "\[Rule]", "\"sell\""}], ",", 
+                    RowBox[{"\"quantities\"", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"\"token0\"", "\[Rule]", "0.`"}], ",", 
+                    RowBox[{"\"token1\"", "\[Rule]", "0.01`"}]}], "}"}]}]}], 
+                    "}"}], "}"}]}], ",", 
+                    RowBox[{"\"wallet\"", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"\"WBTC\"", "\[Rule]", "1.0005462`"}], ",", 
+                    RowBox[{"\"WETH\"", "\[Rule]", "24.99`"}]}], "}"}]}]}], 
+                    "}"}]}]}], "}"}], "}"}]}], ",", 
+               RowBox[{"\"uniswapPoolsData\"", "\[Rule]", 
+                 RowBox[{"{", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    
+                    RowBox[{
+                    "\"liquidity\"", "\[Rule]", "\"368880448094565730\""}], 
+                    ",", 
+                    RowBox[{"\"price\"", "\[Rule]", "0.05465194`"}]}], "}"}], 
+                   "}"}]}]}], "}"}]}], ",", 
+         RowBox[{"\"20129225\"", "\[Rule]", 
+           RowBox[{"{", 
+             TemplateBox[{"1"}, "OutputSizeLimit`Skeleton"], "}"}]}], ",", 
+         TemplateBox[{"2496"}, "OutputSizeLimit`Skeleton"], ",", 
+         TemplateBox[{"1"}, "OutputSizeLimit`Skeleton"], ",", 
+         RowBox[{"\"20131723\"", "\[Rule]", 
+           RowBox[{"{", 
+             RowBox[{
+               RowBox[{"\"agents\"", "\[Rule]", 
+                 RowBox[{"{", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"\"reward\"", "\[Rule]", "1.`*^9"}], ",", 
+                    RowBox[{"\"uniswap\"", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"\"actions\"", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"\"type\"", "\[Rule]", "\"sell\""}], ",", 
+                    RowBox[{"\"quantities\"", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"\"token0\"", "\[Rule]", "0.`"}], ",", 
+                    RowBox[{"\"token1\"", "\[Rule]", "0.01`"}]}], "}"}]}]}], 
+                    "}"}], "}"}]}], ",", 
+                    RowBox[{"\"wallet\"", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"\"WBTC\"", "\[Rule]", "2.3631861`"}], ",", 
+                    RowBox[{"\"WETH\"", "\[Rule]", "0.`"}]}], "}"}]}]}], 
+                    "}"}]}]}], "}"}], "}"}]}], ",", 
+               RowBox[{"\"uniswapPoolsData\"", "\[Rule]", 
+                 RowBox[{"{", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    
+                    RowBox[{
+                    "\"liquidity\"", "\[Rule]", "\"369172256674418370\""}], 
+                    ",", 
+                    TemplateBox[{"1"}, "OutputSizeLimit`Skeleton"]}], "}"}], 
+                   "}"}]}]}], "}"}]}]}], "}"}], Short[#, 8]& ], "line" -> 4, 
+   "sessionID" -> 16681385888890420103, "byteCount" -> 5200480, "size" -> 8, 
+   "stored" -> False, "expr" -> Missing["NotStored"], "wrap" -> 
+   OutputSizeLimit`Defer, "version" -> 1|>,
+  "OutputSizeLimitTemplate"]], "Output",
+ CellChangeTimes->{{3.939043181695572*^9, 3.939043204475903*^9}},
+ CellLabel->"Out[4]=",ExpressionUUID->"44a5837d-7325-4a9f-955d-1914f393d674"]
+}, Open  ]],
+
+Cell[BoxData["\"\<20131724\>\""], "Input",
+ CellChangeTimes->{{3.939043244906164*^9, 
+  3.939043246812934*^9}},ExpressionUUID->"5a631d3b-c545-46cd-9b6b-\
+66f740f8ee96"]
+},
+WindowSize->{1720, 1412},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"14.0 for Mac OS X ARM (64-bit) (December 12, 2023)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]]}, Visible -> False, 
+  FrontEndVersion -> "14.0 for Mac OS X ARM (64-bit) (December 12, 2023)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"],
+ExpressionUUID->"c9c5c24d-ed2c-4fa3-895f-afd6c2d33c9d"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 340, 7, 78, "Input",ExpressionUUID->"325cb689-ee21-43a9-ab05-3611340ae06b"],
+Cell[923, 31, 4175, 90, 205, "Output",ExpressionUUID->"44a5837d-7325-4a9f-955d-1914f393d674"]
+}, Open  ]],
+Cell[5113, 124, 168, 3, 46, "Input",ExpressionUUID->"5a631d3b-c545-46cd-9b6b-66f740f8ee96"]
+}
+]
+*)
+
