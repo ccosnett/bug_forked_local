@@ -97,4 +97,3 @@ if __name__ == "__main__":
 
     # Convert the provided SQLite database file to JSON
     convert_db_file_to_json(args.db)
-Text to speech button¯
